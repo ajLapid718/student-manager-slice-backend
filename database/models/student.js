@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('../db');
 
-const Player = db.define("player", {
+const Student = db.define("student", {
 
   firstName: {
     type: Sequelize.STRING,
@@ -11,13 +11,8 @@ const Player = db.define("player", {
   lastName: {
     type: Sequelize.STRING,
     allowNull: false
-  },
-
-  jerseyNumber: {
-    type: Sequelize.INTEGER,
-    allowNull: false
   }
 
 });
 
-module.exports = Player;
+module.exports = Student;
