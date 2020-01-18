@@ -43,8 +43,8 @@ const { Student, Campus } = require('../database/models');
 
 router.get('/', function(req, res, next) {
   Campus.findAll({include: [Student]})
-    .then(campuses => res.json(campuses))
-    .catch(err => console.log(err))
+    .then(campuses => res.status(200).json(campuses))
+    .catch(err => next(err))
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
