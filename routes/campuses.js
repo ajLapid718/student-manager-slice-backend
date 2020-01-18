@@ -42,7 +42,7 @@ const { Student, Campus } = require('../database/models');
 */
 
 router.get('/', function(req, res, next) {
-  Campus.findAll({include: [Student]})
+  Campus.findAll({include: [Student]}) // this is a JOIN;
     .then(campuses => res.status(200).json(campuses))
     .catch(err => next(err))
 });
