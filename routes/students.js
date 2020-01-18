@@ -124,8 +124,8 @@ With the addition of the "include property in the findAll() and the associated M
 
 router.get('/', function(req, res, next) {
   Student.findAll({include: [Campus]})
-    .then(students => res.json(students))
-    .catch(err => console.log(err))
+    .then(students => res.status(200).json(students))
+    .catch(err => next(err))
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
