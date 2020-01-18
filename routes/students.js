@@ -128,5 +128,15 @@ router.get('/', function(req, res, next) {
     .catch(err => next(err))
 });
 
+router.delete('/:id', function(req, res, next) {
+  Student.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(() => res.status(200).json("Deleted a student!"))
+    .catch(err => next(err))
+});
+
 // Export our router, so that it can be imported to construct our apiRouter;
 module.exports = router;
