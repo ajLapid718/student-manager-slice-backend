@@ -125,8 +125,14 @@ With the addition of the "include property in the findAll() and the associated M
 router.get('/', function(req, res, next) {
   Student.findAll({include: [Campus]})
     .then(students => res.status(200).json(students))
-    .catch(err => next(err))
+    .catch(err => next(err));
 });
+
+router.post('/', function(req, res, next) {
+  Student.create(req.body)
+    .then(createdStudent => res.status(200).json(createdStudent))
+    .catch(err => next(err));
+})
 
 router.delete('/:id', function(req, res, next) {
   Student.destroy({
@@ -135,7 +141,7 @@ router.delete('/:id', function(req, res, next) {
     }
   })
     .then(() => res.status(200).json("Deleted a student!"))
-    .catch(err => next(err))
+    .catch(err => next(err));
 });
 
 // Export our router, so that it can be imported to construct our apiRouter;
